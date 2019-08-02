@@ -8,7 +8,11 @@ class Cookies extends Component {
     this.state = {
       store: false,
       isClicked: false,
-      username: ''
+      username: '',
+      highscore: false,
+      score:0,
+      scorer:"no one"
+
     }
   }
   componentDidMount() {
@@ -30,14 +34,10 @@ class Cookies extends Component {
             value={this.state.username}
             onChangeText={setUsername.bind(this)}
             />
-            <TouchableOpacity
-        onPress={()=> this.props.highscore(this.state.username)}
-        style={[styles.button, styles.button2]}
-        />
+            
             <Text style={styles.clickerCount}> {this.props.cookies} </Text>
             
           </View>
-          {/* Touching the bottom to get to specific part */}
           <View style={styles.shopContainer}>
             <TouchableOpacity style={styles.bottomIcons}>
               <Text>The Shop</Text>
@@ -54,6 +54,30 @@ class Cookies extends Component {
           </View>
         </View>
       );
+    }
+    if (this.state.highscore){
+      return(
+        <View style ={styles.container}>
+          <View style={styles.shopStuff}>
+            <Text>Top Scorer: {this.state.scorer}  Top score: {this.state.score}</Text>
+          </View>
+
+          <View style={styles.shopContainer}>
+            <TouchableOpacity style={styles.bottomIcons} onPress={store.bind(this)}>
+              <Text>The Shop</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.bottomIcons} onPress={toggleHighscore.bind(this)}>
+              <Text>Highest Score</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.bottomIcons}
+              onPress={toggleSwitch.bind(this)}
+            >
+              <Text>My Profile</Text>
+            </TouchableOpacity>
+          </View>
+      </View>
+      )
     }
     if (this.state.store){
       return(
@@ -127,7 +151,8 @@ class Cookies extends Component {
             onPress={store.bind(this)}>
             <Text>The Shop</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.bottomIcons}>
+          <TouchableOpacity style={styles.bottomIcons}
+          onPress={toggleHighscore.bind(this)}>
             <Text>Highest Score</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -146,6 +171,19 @@ function setUsername(user){
     this.setState({
         username: user
     })
+}
+
+function toggleHighscore() {
+  
+  if(this.state.score < this.props.cookies){
+    this.setState({
+      scorer: this.state.username,
+      score: this.props.cookies
+    })
+  }
+this.setState({
+      highscore: !this.state.highscore
+  })
 }
 
 function toggleSwitch() {
@@ -175,8 +213,7 @@ function mapDispatchToProps(dispatch) {
   return {
     increaseCookies: () => dispatch({ type: "INCREASE_COOKIES" }),
     increaseClicker: () => dispatch({ type: "INCREASE_CLICKER" }),
-    increaseAuto:() => dispatch({ type: "INCREASE_AUTO" }),
-        highscore: () => dispatch({type:""}),
+    increaseAuto:() => dispatch({ type: "INCREASE_AUTO" })
 
   };
 }
