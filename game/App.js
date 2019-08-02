@@ -1,83 +1,32 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
+import { createStore } from "redux";
+import Cookies from "./src/Cookies";
+import { Provider } from "react-redux";
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      number: 0
-    };
+const initialState = {
+  cookies: 0,
+  addBy: 1
+};
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "INCREASE_COOKIES":
+      console.log(state.addBy);
+      return { cookies: state.cookies + state.addBy, addBy: 1 };
   }
+  return state;
+};
 
-  clicker() {
-    this.setState({
-      number: this.state.number + 1
-    });
-  }
+const store = createStore(reducer);
 
+class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.clickerContainer}
-          onPress={this.clicker.bind(this)}
-        >
-          <Text style={styles.clickerCount}> {this.state.number} Cookies</Text>
-        </TouchableOpacity>
-        <View style={styles.shopContainer}>
-          <TouchableOpacity style={styles.bottomIcons}
-            // onPress={this.clicker.bind(this)}
-          >
-            <Text>The Shop</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Provider store={store}>
+        <Cookies />
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  clickerContainer: {
-    flex: 9 / 10,
-    backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  clickerCount: {
-    fontSize: 40
-  },
-  shopContainer: {
-    flex: 1 / 10,
-    backgroundColor: "blue",
-    flexDirection: "row",
-  },
-  bottomIcons: {
-    backgroundColor: "white", 
-    flex: 1 / 3,
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
-
-// function game(props) {
-//   const [counter, setCounter] = useState(0)
-
-//   function increaseNumber(e) {
-//     counter = this.state.counter + 1;
-//   }
-
-//   return (
-//   <View style={styles.container}>
-//   <TouchableOpacity
-//     style={styles.clickerContainer}
-//     onPress={e => increaseNumber(e)}
-//   >
-//     <Text> Clicker: {this.state.counter} </Text>
-//   </TouchableOpacity>
-//   <View style={styles.shopContainer} />
-// </View>
-// );
-// }
+export default App;
