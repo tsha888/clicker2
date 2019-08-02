@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 
 const initialState = {
   level: 1,
-  cookies: 0,
-  clickerLevel: 100,
+  cookies: 5,
+  clickerLevel: 1,
   clickerPrice: 100,
   grandmaLevel: 0,
   grandmaPrice: 500,
@@ -38,7 +38,8 @@ const initialState = {
     "https://i.pinimg.com/originals/df/8c/9f/df8c9f054b824dfd80351e5271016320.gif",
     "https://i.pinimg.com/originals/6a/8c/e1/6a8ce1e8d6d6c824d2aa299ede259ae9.gif",
     "https://i.pinimg.com/originals/e8/68/5a/e8685a9cd5689d70211afc6b6f74f756.gif"
-  ]
+  ],
+  pageBackground: "https://media0.giphy.com/media/ouYdqNNhIveCI/giphy.gif"
 };
 
 setInterval(() => {
@@ -83,7 +84,8 @@ const reducer = (state = initialState, action) => {
           background: [
             initialState.background.shift(),
             initialState.background
-          ][1]
+          ][1],
+          pageBackground: initialState.pageBackground
         };
       }
       return {
@@ -100,7 +102,8 @@ const reducer = (state = initialState, action) => {
         healthPoints:
           state.healthPoints - state.clickerLevel - state.grandmaLevel * 3,
         uri: initialState.uri,
-        background: initialState.background
+        background: initialState.background,
+        pageBackground: initialState.pageBackground
       };
 
     case "INCREASE_CLICKER":
@@ -120,7 +123,8 @@ const reducer = (state = initialState, action) => {
         level: state.level,
         healthPoints: state.healthPoints,
         uri: initialState.uri,
-        background: initialState.background
+        background: initialState.background,
+        pageBackground: initialState.pageBackground
       };
 
     case "INCREASE_GRANDMA":
@@ -140,7 +144,8 @@ const reducer = (state = initialState, action) => {
         level: state.level,
         healthPoints: state.healthPoints,
         uri: initialState.uri,
-        background: initialState.background
+        background: initialState.background,
+        pageBackground: initialState.pageBackground
       };
 
     case "INCREASE_AUTO":
@@ -160,7 +165,8 @@ const reducer = (state = initialState, action) => {
         level: state.level,
         healthPoints: state.healthPoints,
         uri: initialState.uri,
-        background: initialState.background
+        background: initialState.background,
+        pageBackground: initialState.pageBackground
       };
 
     case "AUTO_INCREASE":
@@ -177,7 +183,8 @@ const reducer = (state = initialState, action) => {
         level: state.level,
         healthPoints: state.healthPoints,
         uri: initialState.uri,
-        background: initialState.background
+        background: initialState.background,
+        pageBackground: initialState.pageBackground
       };
 
     case "INCREASE_RAPID":
@@ -197,7 +204,8 @@ const reducer = (state = initialState, action) => {
         level: state.level,
         healthPoints: state.healthPoints,
         uri: initialState.uri,
-        background: initialState.background
+        background: initialState.background,
+        pageBackground: initialState.pageBackground
       };
 
     case "RAPID_INCREASE":
@@ -221,7 +229,8 @@ const reducer = (state = initialState, action) => {
           background: [
             initialState.background.shift(),
             initialState.background
-          ][1]
+          ][1],
+          pageBackground: initialState.pageBackground
         };
       }
       return {
@@ -237,7 +246,8 @@ const reducer = (state = initialState, action) => {
         level: state.level,
         healthPoints: state.healthPoints - Math.round(state.rapidLevel * 5),
         uri: initialState.uri,
-        background: initialState.background
+        background: initialState.background,
+        pageBackground: initialState.pageBackground
       };
   }
   return state;
