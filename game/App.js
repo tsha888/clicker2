@@ -1,19 +1,32 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { createStore } from "redux";
+import Cookies from "./src/Cookies";
+import { Provider } from "react-redux";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+const initialState = {
+  cookies: 0,
+  addBy: 1
+};
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "INCREASE_COOKIES":
+      console.log(state.addBy);
+      return { cookies: state.cookies + state.addBy, addBy: state.addBy };
+  }
+  return state;
+};
+
+const store = createStore(reducer);
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Cookies />
+      </Provider>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
