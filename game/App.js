@@ -1,33 +1,16 @@
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import Login from "./screens/Login";
+import Register from "./screens/Register";
+import Main from "./screens/Main";
+import { SCREENS } from "./constants";
 
-import React, { Component } from "react";
-import { createStore } from "redux";
-import Cookies from "./src/Cookies";
-import { Provider } from "react-redux";
+const Navigator = createStackNavigator(
+  {
+    Login: Login,
+    Register: Register,
+    Main: Main
+  },
+  { initialRouteName: SCREENS.MAIN }
+);
 
-const initialState = {
-  cookies: 0,
-  addBy: 1
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "INCREASE_COOKIES":
-      console.log(state.addBy);
-      return { cookies: state.cookies + state.addBy, addBy: state.addBy };
-  }
-  return state;
-};
-
-const store = createStore(reducer);
-
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Cookies />
-      </Provider>
-    );
-  }
-}
-
-export default App;
+export default createAppContainer(Navigator);
