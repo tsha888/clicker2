@@ -58,7 +58,7 @@ function Login(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textBig}>Login to HoHoHo!</Text>
+      <Text style={styles.textBig}> CLICKER GAME </Text>
       <Text style={{ color: "red" }}>{status}</Text>
       <TextInput
         style={styles.textinput}
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     color: "white"
   },
   textinput: {
-    borderColor: "red",
+    borderColor: "blue",
     paddingLeft: 10,
     backgroundColor: "white",
     borderRadius: 5,

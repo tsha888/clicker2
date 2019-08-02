@@ -12,6 +12,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "INCREASE_COOKIES":
       return { cookies: state.cookies + state.addBy, addBy: state.addBy };
+
   }
   return state;
 };
