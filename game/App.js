@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 const initialState = {
   level: 1,
-  cookies: 5,
+  cookies: 0,
   clickerLevel: 1,
   clickerPrice: 100,
   grandmaLevel: 0,
@@ -16,16 +16,16 @@ const initialState = {
   rapidPrice: 7000,
   healthPoints: 200,
   uri: [
+    "https://66.media.tumblr.com/6cb41ed2fd4c87339dd14acf3a8d7657/tumblr_o4wsyuAmEi1tul88ho1_400.gif",
     "https://thumbs.gfycat.com/ShamefulWelltodoEgret-max-1mb.gif",
     "https://ui-ex.com/images/transparent-gif-monster-hunter-5.gif",
     "https://www.gamedevmarket.net/wp-content/uploads/80446f3cd96a9d047e5bdba233c1c82f83f69d29.gif",
     "https://i.pinimg.com/originals/ee/68/de/ee68debb218e8f4f2cf03f8b1270034d.gif",
     "http://www.owlboygame.com/images/Turtleguardian.gif",
-    "https://media1.giphy.com/media/63KDSfdeTGainb0dP2/giphy.gif",
     "https://media1.giphy.com/media/9J573df8UQM97TOFHR/giphy.gif",
-    "https://media1.giphy.com/media/pVVKJJuEQre3219fLh/giphy.gif",
-    "https://thumbs.gfycat.com/ShamefulWelltodoEgret-max-1mb.gif",
-    "https://ui-ex.com/images/transparent-gif-monster-hunter-5.gif"
+    "https://i.pinimg.com/originals/55/24/9d/55249d26ef3c0914a674df5e88d167aa.gif",
+    "http://www.powerhoof.com/wp-content/uploads/2013/08/enemy3b.gif",
+    "https://s8.postimg.cc/ssfwi68fp/Alric_SM.gif"
   ],
   background: [
     "https://i.pinimg.com/originals/7c/17/f0/7c17f0c64b977875a2c0625b406bb0d2.gif",
@@ -36,10 +36,10 @@ const initialState = {
     "https://i.pinimg.com/originals/5c/b0/02/5cb002bb6af9a7c057e8a4708f851f78.gif",
     "https://i.pinimg.com/originals/00/ad/39/00ad399951be7b3afd8adee8c9f107ab.gif",
     "https://i.pinimg.com/originals/df/8c/9f/df8c9f054b824dfd80351e5271016320.gif",
-    "https://i.pinimg.com/originals/6a/8c/e1/6a8ce1e8d6d6c824d2aa299ede259ae9.gif",
-    "https://i.pinimg.com/originals/e8/68/5a/e8685a9cd5689d70211afc6b6f74f756.gif"
+    "https://media0.giphy.com/media/ouYdqNNhIveCI/giphy.gif"
   ],
-  pageBackground: "https://media0.giphy.com/media/ouYdqNNhIveCI/giphy.gif"
+  pageBackground:
+    "https://i.pinimg.com/originals/e8/68/5a/e8685a9cd5689d70211afc6b6f74f756.gif"
 };
 
 setInterval(() => {
@@ -62,7 +62,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "INCREASE_COOKIES":
       if (
-        state.healthPoints - state.grandmaLevel * 3 - state.clickerLevel <=
+        state.healthPoints - state.grandmaLevel * 2 - state.clickerLevel <=
         0
       ) {
         return {
@@ -80,16 +80,16 @@ const reducer = (state = initialState, action) => {
             state.healthPoints -
             state.healthPoints +
             200 * (state.level + 1) * state.level,
-          uri: [initialState.uri.shift(), initialState.uri][1],
+          uri: [(a = initialState.uri.shift()), initialState.uri.push(a)][1],
           background: [
-            initialState.background.shift(),
-            initialState.background
+            (b = initialState.background.shift()),
+            initialState.background.push(b)
           ][1],
           pageBackground: initialState.pageBackground
         };
       }
       return {
-        cookies: state.cookies + state.clickerLevel + state.grandmaLevel * 3,
+        cookies: state.cookies + state.clickerLevel + state.grandmaLevel * 2,
         clickerLevel: state.clickerLevel,
         clickerPrice: state.clickerPrice,
         grandmaLevel: state.grandmaLevel,
@@ -100,7 +100,7 @@ const reducer = (state = initialState, action) => {
         rapidPrice: state.rapidPrice,
         level: state.level,
         healthPoints:
-          state.healthPoints - state.clickerLevel - state.grandmaLevel * 3,
+          state.healthPoints - state.clickerLevel - state.grandmaLevel * 2,
         uri: initialState.uri,
         background: initialState.background,
         pageBackground: initialState.pageBackground
@@ -225,10 +225,10 @@ const reducer = (state = initialState, action) => {
             state.healthPoints -
             state.healthPoints +
             200 * (state.level + 1) * state.level,
-          uri: [initialState.uri.shift(), initialState.uri][1],
+          uri: [(y = initialState.uri.shift()), initialState.uri.push(y)][1],
           background: [
-            initialState.background.shift(),
-            initialState.background
+            (x = initialState.background.shift()),
+            initialState.background.push(x)
           ][1],
           pageBackground: initialState.pageBackground
         };

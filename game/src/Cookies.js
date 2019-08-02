@@ -37,21 +37,15 @@ class Cookies extends Component {
               <View style={styles.shopItem}>
                 <View style={styles.itemInfo}>
                   <Text style={styles.information}>
-                    {" "}
-                    Clicker: lvl {this.props.clickerLevel}{" "}
+                    Clicker: lvl {this.props.clickerLevel}
                   </Text>
                   <Text style={styles.goldNumber}>
-                    {" "}
-                    Total Gold: {this.props.cookies}{" "}
+                    Total Gold: {this.props.cookies}
                   </Text>
                   <Text style={styles.priceNumber}>
-                    {" "}
-                    Clicker Price: {this.props.clickerPrice}{" "}
+                    Clicker Price: {this.props.clickerPrice}
                   </Text>
-                  <Text style={styles.information}>
-                    {" "}
-                    +1 dmg for every click{" "}
-                  </Text>
+                  <Text style={styles.information}>x1 dmg for every click</Text>
                 </View>
 
                 <View style={styles.buyItem}>
@@ -67,21 +61,15 @@ class Cookies extends Component {
               <View style={styles.shopItem}>
                 <View style={styles.itemInfo}>
                   <Text style={styles.information}>
-                    {" "}
-                    Elite: lvl {this.props.grandmaLevel}{" "}
+                    Elite: lvl {this.props.grandmaLevel}
                   </Text>
                   <Text style={styles.goldNumber}>
-                    {" "}
-                    Total Gold: {this.props.cookies}{" "}
+                    Total Gold: {this.props.cookies}
                   </Text>
                   <Text style={styles.priceNumber}>
-                    {" "}
-                    Elite Price: {this.props.grandmaPrice}{" "}
+                    Elite Price: {this.props.grandmaPrice}
                   </Text>
-                  <Text style={styles.information}>
-                    {" "}
-                    x3 dmg for every click{" "}
-                  </Text>
+                  <Text style={styles.information}>x2 dmg for every click</Text>
                 </View>
 
                 <View style={styles.buyItem}>
@@ -97,20 +85,16 @@ class Cookies extends Component {
               <View style={styles.shopItem}>
                 <View style={styles.itemInfo}>
                   <Text style={styles.information}>
-                    {" "}
-                    AutoGold: lvl {this.props.autoLevel}{" "}
+                    AutoGold: lvl {this.props.autoLevel}
                   </Text>
                   <Text style={styles.goldNumber}>
-                    {" "}
-                    Total Gold: {this.props.cookies}{" "}
+                    Total Gold: {this.props.cookies}
                   </Text>
                   <Text style={styles.priceNumber}>
-                    {" "}
-                    AutoGold Price: {this.props.autoPrice}{" "}
+                    AutoGold Price: {this.props.autoPrice}
                   </Text>
                   <Text style={styles.information}>
-                    {" "}
-                    x5 gold for every .1 sec{" "}
+                    x5 gold for every .1 sec
                   </Text>
                 </View>
 
@@ -127,21 +111,16 @@ class Cookies extends Component {
               <View style={styles.shopItem}>
                 <View style={styles.itemInfo}>
                   <Text style={styles.information}>
-                    RapidClick: lvl {this.props.rapidLevel}{" "}
+                    RapidClick: lvl {this.props.rapidLevel}
                   </Text>
                   <Text style={styles.goldNumber}>
-                    {" "}
-                    Total Gold: {this.props.cookies}{" "}
+                    Total Gold: {this.props.cookies}
                   </Text>
                   <Text style={styles.priceNumber}>
-                    {" "}
-                    RapidClick Price: {this.props.rapidPrice}{" "}
+                    RapidClick Price: {this.props.rapidPrice}
                   </Text>
                   <Text style={styles.information2}> x5 dmg every .1 sec </Text>
-                  <Text style={styles.information2}>
-                    {" "}
-                    x2 gold every .1 sec{" "}
-                  </Text>
+                  <Text style={styles.information2}>x2 gold every .1 sec</Text>
                 </View>
 
                 <View style={styles.buyItem}>
@@ -306,7 +285,7 @@ class Cookies extends Component {
                 source={{
                   uri: this.props.uri[0]
                 }}
-                style={{ width: 300, height: 300 }}
+                style={{ width: 300, height: 300, }}
               />
             </TouchableOpacity>
             <Text style={styles.healthAmount}>
@@ -557,7 +536,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     borderRadius: 15,
     backgroundColor: "white",
-    opacity: 0.9
+    opacity: 0.8
   },
   itemInfo: {
     alignItems: "center",
