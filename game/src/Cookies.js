@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 
 class Cookies extends Component {
@@ -7,13 +7,18 @@ class Cookies extends Component {
     return (
       // The entire screen
       <View style={styles.container}>
-        {/* Touching the entire top part of screen for increasing cookies */}
-        <TouchableOpacity
-          style={styles.clickerContainer}
-          onPress={() => this.props.increaseCookies()}
-        >
+        <View style={styles.clickerContainer}>
           <Text style={styles.clickerCount}> {this.props.cookies} </Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.increaseCookies()}>
+            <Image
+              source={{
+                uri:
+                  "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0fc.png"
+              }}
+              style={{ width: 200, height: 200 }}
+            />
+          </TouchableOpacity>
+        </View>
         {/* Touching the bottom to get to specific part */}
         <View style={styles.shopContainer}>
           <TouchableOpacity style={styles.bottomIcons}>
