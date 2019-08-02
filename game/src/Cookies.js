@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+=======
+import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
+>>>>>>> d8b750db7f08dda9cc3c0d4675be399306a1e859
 import { connect } from "react-redux";
 
 class Cookies extends Component {
@@ -7,6 +11,7 @@ class Cookies extends Component {
     return (
       // The entire screen
       <View style={styles.container}>
+<<<<<<< HEAD
         {/* Touching the entire top part of screen for increasing cookies */}
         <TouchableOpacity
           style={styles.clickerContainer}
@@ -14,6 +19,20 @@ class Cookies extends Component {
         >
           <Text style={styles.clickerCount}> {this.props.cookies} </Text>
         </TouchableOpacity>
+=======
+        <View style={styles.clickerContainer}>
+          <Text style={styles.clickerCount}> {this.props.cookies} </Text>
+          <TouchableOpacity onPress={() => this.props.increaseCookies()}>
+            <Image
+              source={{
+                uri:
+                  "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0fc.png"
+              }}
+              style={{ width: 200, height: 200 }}
+            />
+          </TouchableOpacity>
+        </View>
+>>>>>>> d8b750db7f08dda9cc3c0d4675be399306a1e859
         {/* Touching the bottom to get to specific part */}
         <View style={styles.shopContainer}>
           <TouchableOpacity style={styles.bottomIcons}>
@@ -65,4 +84,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> d8b750db7f08dda9cc3c0d4675be399306a1e859
