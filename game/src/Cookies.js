@@ -1,11 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import {
   Image,
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  Button,
   TextInput
 } from "react-native";
 import { connect } from "react-redux";
@@ -34,92 +33,133 @@ class Cookies extends Component {
     if (this.state.clickShop) {
       return (
         <View style={styles.container}>
-          <View style={styles.shopStuff}>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                margin: "auto"
-              }}
-            >
-              <View style={{ marginRight: 10, alignItems: "center" }}>
-                <Text> Clicker: level {this.props.clickerLevel} </Text>
-                <Text> Total Cookies: {this.props.cookies} </Text>
-                <Text> Clicker Price: {this.props.clickerPrice} </Text>
+          <View style={styles.topContainer}>
+            <View style={styles.shopItem}>
+              <View style={styles.itemInfo}>
+                <Text style={styles.information}>
+                  {" "}
+                  Clicker: level {this.props.clickerLevel}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  Total Gold: {this.props.cookies}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  Clicker Price: {this.props.clickerPrice}{" "}
+                </Text>
+                <Text style={styles.information}> +1 dmg for every click </Text>
               </View>
 
-              <View style={{ marginLeft: 10 }}>
-                <TouchableOpacity onPress={() => this.props.increaseClicker()}>
-                  <View
-                    style={{ backgroundColor: "red", width: 40, height: 30 }}
-                  />
+              <View style={styles.buyItem}>
+                <TouchableOpacity
+                  onPress={() => this.props.increaseClicker()}
+                  style={styles.buyButton}
+                >
+                  <Text style={styles.buy}> Upgrade </Text>
                 </TouchableOpacity>
               </View>
             </View>
 
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                margin: "auto"
-              }}
-            >
-              <View style={{ marginRight: 10, alignItems: "center" }}>
-                <Text> Grandma: level {this.props.grandmaLevel} </Text>
-                <Text> Total Cookies: {this.props.cookies} </Text>
-                <Text> Grandma Price: {this.props.grandmaPrice} </Text>
+            <View style={styles.shopItem}>
+              <View style={styles.itemInfo}>
+                <Text style={styles.information}>
+                  {" "}
+                  Elite: level {this.props.grandmaLevel}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  Total Gold: {this.props.cookies}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  Elite Price: {this.props.grandmaPrice}{" "}
+                </Text>
+                <Text style={styles.information}> x3 for every click </Text>
               </View>
 
-              <View style={{ marginLeft: 10 }}>
-                <TouchableOpacity onPress={() => this.props.increaseGrandma()}>
-                  <View
-                    style={{ backgroundColor: "red", width: 40, height: 30 }}
-                  />
+              <View style={styles.buyItem}>
+                <TouchableOpacity
+                  onPress={() => this.props.increaseGrandma()}
+                  style={styles.buyButton}
+                >
+                  <Text style={styles.buy}> Upgrade </Text>
                 </TouchableOpacity>
               </View>
             </View>
 
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                margin: "auto"
-              }}
-            >
-              <View style={{ marginRight: 10, alignItems: "center" }}>
-                <Text> AutoClick: level {this.props.autoLevel} </Text>
-                <Text> Total Cookies: {this.props.cookies} </Text>
-                <Text> Auto Price: {this.props.autoPrice} </Text>
+            <View style={styles.shopItem}>
+              <View style={styles.itemInfo}>
+                <Text style={styles.information}>
+                  {" "}
+                  AutoGold: level {this.props.autoLevel}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  Total Gold: {this.props.cookies}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  AutoGold Price: {this.props.autoPrice}{" "}
+                </Text>
+                <Text style={styles.information}> x5 gold for every sec </Text>
               </View>
 
-              <View style={{ marginLeft: 10 }}>
-                <TouchableOpacity onPress={() => this.props.increaseAuto()}>
-                  <View
-                    style={{ backgroundColor: "red", width: 40, height: 30 }}
-                  />
+              <View style={styles.buyItem}>
+                <TouchableOpacity
+                  onPress={() => this.props.increaseAuto()}
+                  style={styles.buyButton}
+                >
+                  <Text style={styles.buy}> Upgrade </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={styles.shopItem}>
+              <View style={styles.itemInfo}>
+                <Text style={styles.information}>
+                  RapidClick: level {this.props.rapidLevel}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  Total Gold: {this.props.cookies}{" "}
+                </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  Rapid Price: {this.props.rapidPrice}{" "}
+                </Text>
+                <Text style={styles.information}> x5 damage per .1 sec </Text>
+              </View>
+
+              <View style={styles.buyItem}>
+                <TouchableOpacity
+                  onPress={() => this.props.increaseRapid()}
+                  style={styles.buyButton}
+                >
+                  <Text style={styles.buy}> Upgrade </Text>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
 
-          <View style={styles.shopContainer}>
+          <View style={styles.bottomContainer}>
             <TouchableOpacity
-              style={styles.bottomIcons}
               onPress={toggleShop.bind(this)}
+              style={styles.bottomButtons}
             >
-              <Text>The Shop</Text>
+              <Text style={styles.footerButtons}>The Shop</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.bottomIcons}
               onPress={toggleHighscore.bind(this)}
+              style={styles.bottomButtons}
             >
-              <Text>Highest Score</Text>
+              <Text style={styles.footerButtons}>Highest Score</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.bottomIcons}
               onPress={toggleProfile.bind(this)}
+              style={styles.bottomButtons}
             >
-              <Text>My Profile</Text>
+              <Text style={styles.footerButtons}>My Profile</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -129,30 +169,36 @@ class Cookies extends Component {
     if (this.state.highscore) {
       return (
         <View style={styles.container}>
-          <View style={styles.shopStuff}>
-            <Text>
-              Top Scorer: {this.state.scorer} Top score: {this.state.score}
-            </Text>
+          <View style={styles.highscoreTopContainer}>
+            <Text style={styles.leaderboardHeader}> Leaderboards </Text>
+            <View style={styles.leadberboardCategory}>
+              <Text style={styles.categoryText}> Name </Text>
+              <Text style={styles.categoryText}> Score </Text>
+            </View>
+            <View style={styles.leadberboardCategory}>
+              <Text style={styles.resultText}> {this.state.scorer} </Text>
+              <Text style={styles.resultText}> Lvl. {this.state.score} </Text>
+            </View>
           </View>
 
-          <View style={styles.shopContainer}>
+          <View style={styles.bottomContainer}>
             <TouchableOpacity
-              style={styles.bottomIcons}
               onPress={toggleShop.bind(this)}
+              style={styles.bottomButtons}
             >
-              <Text>The Shop</Text>
+              <Text style={styles.footerButtons}>The Shop</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.bottomIcons}
               onPress={toggleHighscore.bind(this)}
+              style={styles.bottomButtons}
             >
-              <Text>Highest Score</Text>
+              <Text style={styles.footerButtons}>Highest Score</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.bottomIcons}
               onPress={toggleProfile.bind(this)}
+              style={styles.bottomButtons}
             >
-              <Text>My Profile</Text>
+              <Text style={styles.footerButtons}>My Profile</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -162,34 +208,41 @@ class Cookies extends Component {
     if (this.state.clickProfile) {
       return (
         <View style={styles.container}>
-          <View style={styles.clickerContainer}>
+          <View style={styles.topContainer}>
+            <Text style={styles.cookieAmount}>{this.props.cookies}</Text>
             <TextInput
-              style={styles.clickerCount}
               placeholder="Enter your username"
+              placeholderTextColor="gray"
               value={this.state.username}
               onChangeText={setUsername.bind(this)}
+              style={styles.usernameVal}
             />
-
-            <Text style={styles.clickerCount}> {this.props.cookies} </Text>
-          </View>
-          <View style={styles.shopContainer}>
             <TouchableOpacity
-              style={styles.bottomIcons}
-              onPress={toggleShop.bind(this)}
-            >
-              <Text>The Shop</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.bottomIcons}
-              onPress={toggleHighscore.bind(this)}
-            >
-              <Text>Highest Score</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.bottomIcons}
               onPress={toggleProfile.bind(this)}
+              style={styles.playGame}
             >
-              <Text>My Profile</Text>
+              <Text> Play Game </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.bottomContainer}>
+            <TouchableOpacity
+              onPress={toggleShop.bind(this)}
+              style={styles.bottomButtons}
+            >
+              <Text style={styles.footerButtons}>The Shop</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={toggleHighscore.bind(this)}
+              style={styles.bottomButtons}
+            >
+              <Text style={styles.footerButtons}>Highest Score</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={toggleProfile.bind(this)}
+              style={styles.bottomButtons}
+            >
+              <Text style={styles.footerButtons}>My Profile</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -197,39 +250,44 @@ class Cookies extends Component {
     }
 
     return (
-      // The entire screen
       <View style={styles.container}>
-        <View style={styles.clickerContainer}>
-          <Text style={styles.count}> {this.props.cookies} </Text>
-          <TouchableOpacity onPress={() => this.props.increaseCookies()}>
-            <Image
-              source={{
-                uri:
-                  "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0fc.png"
-              }}
-              style={{ width: 200, height: 200 }}
-            />
-          </TouchableOpacity>
+        <View style={styles.topContainer}>
+          <View style={styles.cookieScreen}>
+            <Text style={styles.levelAmount}> LVL: {this.props.level}</Text>
+            <Text style={styles.goldAmount}> Gold: {this.props.cookies} </Text>
+            <TouchableOpacity onPress={() => this.props.increaseCookies()}>
+              <Image
+                source={{
+                  uri: this.props.uri[0]
+                }}
+                style={{ width: 300, height: 300 }}
+              />
+            </TouchableOpacity>
+            <Text style={styles.healthAmount}>
+              {" "}
+              HP: {this.props.healthPoints}{" "}
+            </Text>
+          </View>
         </View>
-        {/* Touching the bottom to get to specific part */}
-        <View style={styles.shopContainer}>
+
+        <View style={styles.bottomContainer}>
           <TouchableOpacity
-            style={styles.bottomIcons}
             onPress={toggleShop.bind(this)}
+            style={styles.bottomButtons}
           >
-            <Text>The Shop</Text>
+            <Text style={styles.footerButtons}>The Shop</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.bottomIcons}
             onPress={toggleHighscore.bind(this)}
+            style={styles.bottomButtons}
           >
-            <Text>Highest Score</Text>
+            <Text style={styles.footerButtons}>Highest Score</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.bottomIcons}
             onPress={toggleProfile.bind(this)}
+            style={styles.bottomButtons}
           >
-            <Text>My Profile</Text>
+            <Text style={styles.footerButtons}>My Profile</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -268,10 +326,10 @@ function toggleHighscore() {
       highscore: !this.state.highscore
     });
   }
-  if (this.state.score < this.props.cookies) {
+  if (this.state.score < this.props.level) {
     this.setState({
       scorer: this.state.username,
-      score: this.props.cookies
+      score: this.props.level
     });
   }
   this.setState({
@@ -312,7 +370,12 @@ function mapStateToProps(state) {
     grandmaPrice: state.grandmaPrice,
     autoLevel: state.autoLevel,
     autoPrice: state.autoPrice,
-    highscore: state.highscore
+    rapidLevel: state.rapidLevel,
+    rapidPrice: state.rapidPrice,
+    highscore: state.highscore,
+    level: state.level,
+    healthPoints: state.healthPoints,
+    uri: state.uri
   };
 }
 
@@ -322,6 +385,7 @@ function mapDispatchToProps(dispatch) {
     increaseClicker: () => dispatch({ type: "INCREASE_CLICKER" }),
     increaseGrandma: () => dispatch({ type: "INCREASE_GRANDMA" }),
     increaseAuto: () => dispatch({ type: "INCREASE_AUTO" }),
+    increaseRapid: () => dispatch({ type: "INCREASE_RAPID" }),
     highscore: () => dispatch({ type: "" })
   };
 }
@@ -335,52 +399,134 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  theShop: {
-    flex: 9 / 10,
-    alignItems: "center",
-    justifyContent: "space-around"
-  },
-  count: {
-    fontSize: 40
-  },
-  shopStuff: {
-    flex: 9 / 10,
-    backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "space-around"
-  },
-  clickerContainer: {
-    flex: 9 / 10,
-    backgroundColor: "pink",
+  topContainer: {
+    flex: 14 / 15,
     alignItems: "center",
     justifyContent: "center"
   },
-  clickerCount: {
-    fontSize: 40,
-    paddingBottom: 200
+  highscoreTopContainer: {
+    flex: 14 / 15,
+    alignItems: "center"
   },
-  shopContainer: {
-    flex: 1 / 10,
-    backgroundColor: "blue",
+  bottomContainer: {
+    flex: 1 / 15,
     flexDirection: "row"
   },
-  bottomIcons: {
-    backgroundColor: "white",
-    flex: 1 / 3,
+  cookieScreen: {
     alignItems: "center",
     justifyContent: "center"
   },
-  button: {
-    alignSelf: "stretch",
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderRadius: 5,
-    width: "80%",
-    marginLeft: "10%",
-    marginRight: "10%",
-    marginTop: 20
+  levelAmount: {
+    fontFamily: "Cochin",
+    color: "gray"
   },
-  button2: {
-    backgroundColor: "gold"
+  cookieAmount: {
+    fontFamily: "Cochin",
+    fontSize: 50,
+    marginBottom: 40
+  },
+  goldAmount: {
+    fontFamily: "Cochin",
+    fontSize: 25,
+    marginBottom: 40
+  },
+  healthAmount: {
+    fontFamily: "Cochin",
+    fontSize: 35,
+    marginTop: 30,
+    color: "red"
+  },
+  bottomButtons: {
+    flex: 1 / 3,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "black"
+  },
+  usernameVal: {
+    marginBottom: 50,
+    fontFamily: "Cochin",
+    fontSize: 30,
+    borderBottomColor: "blue",
+    borderBottomWidth: 1
+  },
+  playGame: {
+    backgroundColor: "gold",
+    fontSize: 30,
+    paddingTop: 10,
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    borderColor: "yellow",
+    borderWidth: 1,
+    borderRadius: 15
+  },
+  leaderboardHeader: {
+    width: "100%",
+    textAlign: "center",
+    justifyContent: "center",
+    fontSize: 40,
+    fontFamily: "Cochin",
+    marginTop: "30%"
+  },
+  leadberboardCategory: {
+    flexDirection: "row",
+    marginTop: 35
+  },
+  categoryText: {
+    flex: 1 / 2,
+    fontFamily: "Cochin",
+    fontSize: 30,
+    textAlign: "center"
+  },
+  resultText: {
+    flex: 1 / 2,
+    fontFamily: "Cochin",
+    fontSize: 25,
+    color: "darkgray",
+    textAlign: "center"
+  },
+  shopItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 25,
+    width: "98%",
+    borderWidth: 1,
+    borderColor: "brown",
+    paddingBottom: 10,
+    paddingTop: 10,
+    borderRadius: 15
+  },
+  itemInfo: {
+    alignItems: "center",
+    width: "60%"
+  },
+  buyItem: {
+    alignItems: "center",
+    width: "40%"
+  },
+  buyButton: {
+    backgroundColor: "green",
+    fontSize: 20,
+    paddingTop: 5,
+    paddingRight: 10,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    borderColor: "darkgreen",
+    borderWidth: 1,
+    borderRadius: 15
+  },
+  buy: {
+    fontFamily: "Cochin",
+    fontSize: 20,
+    color: "yellow"
+  },
+  information: {
+    fontFamily: "Cochin",
+    fontSize: 20
+  },
+  footerButtons: {
+    fontFamily: "Cochin",
+    fontSize: 15
   }
 });
