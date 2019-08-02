@@ -1,19 +1,46 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity
+} from "react-native";
+import { createStore } from 'redux'
+import CounterApp from './src/CounterApp'
+import { Provider } from 'react-redux'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+const initialState = {
+    counter: 0
+}
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'INCREASE_COUNTER':
+            return { counter: state.counter + 1 }
+    }
+    return state
 }
 
+const store = createStore(reducer)
+
+class App extends Component {
+
+    render() {
+        return (
+            <Provider store={store}>
+                <CounterApp />
+            </Provider>
+        );
+    }
+}
+
+export default App
+
+// export default App;
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
