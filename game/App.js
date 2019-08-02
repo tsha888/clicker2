@@ -1,46 +1,33 @@
 import React, { Component } from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity
-} from "react-native";
-import { createStore } from 'redux'
-import CounterApp from './src/CounterApp'
-import { Provider } from 'react-redux'
+import { createStore } from "redux";
+import Cookies from "./src/Cookies";
+import { Provider } from "react-redux";
+import shop from './screens/shop'
 
 const initialState = {
-    counter: 0
-}
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'INCREASE_COUNTER':
-            return { counter: state.counter + 1 }
-    }
-    return state
-}
+  cookies: 0,
+  addBy: 1
+};
 
-const store = createStore(reducer)
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "INCREASE_COOKIES":
+      return { cookies: state.cookies + state.addBy, addBy: state.addBy };
+  }
+  return state;
+};
+
+const store = createStore(reducer);
 
 class App extends Component {
-
-    render() {
-        return (
-            <Provider store={store}>
-                <CounterApp />
-            </Provider>
-        );
-    }
+  render() {
+    return (
+      <Provider store={store}>
+        <Cookies />
+        
+      </Provider>
+    );
+  }
 }
 
-export default App
-
-// export default App;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-});
+export default App;
