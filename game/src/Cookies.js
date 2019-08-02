@@ -5,7 +5,8 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  ImageBackground
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -13,20 +14,13 @@ class Cookies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clickProfile: false,
+      clickProfile: true,
       clickShop: false,
       highscore: false,
       username: "",
       score: 0,
       scorer: "no one"
     };
-  }
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        timer: this.props.cookies + 1
-      });
-    }, 1000);
   }
 
   render() {
@@ -38,13 +32,13 @@ class Cookies extends Component {
               <View style={styles.itemInfo}>
                 <Text style={styles.information}>
                   {" "}
-                  Clicker: level {this.props.clickerLevel}{" "}
+                  Clicker: lvl {this.props.clickerLevel}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.goldNumber}>
                   {" "}
                   Total Gold: {this.props.cookies}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.priceNumber}>
                   {" "}
                   Clicker Price: {this.props.clickerPrice}{" "}
                 </Text>
@@ -65,17 +59,17 @@ class Cookies extends Component {
               <View style={styles.itemInfo}>
                 <Text style={styles.information}>
                   {" "}
-                  Elite: level {this.props.grandmaLevel}{" "}
+                  Elite: lvl {this.props.grandmaLevel}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.goldNumber}>
                   {" "}
                   Total Gold: {this.props.cookies}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.priceNumber}>
                   {" "}
                   Elite Price: {this.props.grandmaPrice}{" "}
                 </Text>
-                <Text style={styles.information}> x3 for every click </Text>
+                <Text style={styles.information}> x3 dmg for every click </Text>
               </View>
 
               <View style={styles.buyItem}>
@@ -92,17 +86,20 @@ class Cookies extends Component {
               <View style={styles.itemInfo}>
                 <Text style={styles.information}>
                   {" "}
-                  AutoGold: level {this.props.autoLevel}{" "}
+                  AutoGold: lvl {this.props.autoLevel}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.goldNumber}>
                   {" "}
                   Total Gold: {this.props.cookies}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.priceNumber}>
                   {" "}
                   AutoGold Price: {this.props.autoPrice}{" "}
                 </Text>
-                <Text style={styles.information}> x5 gold for every sec </Text>
+                <Text style={styles.information}>
+                  {" "}
+                  x5 gold for every .1 sec{" "}
+                </Text>
               </View>
 
               <View style={styles.buyItem}>
@@ -118,17 +115,18 @@ class Cookies extends Component {
             <View style={styles.shopItem}>
               <View style={styles.itemInfo}>
                 <Text style={styles.information}>
-                  RapidClick: level {this.props.rapidLevel}{" "}
+                  RapidClick: lvl {this.props.rapidLevel}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.goldNumber}>
                   {" "}
                   Total Gold: {this.props.cookies}{" "}
                 </Text>
-                <Text style={styles.information}>
+                <Text style={styles.priceNumber}>
                   {" "}
-                  Rapid Price: {this.props.rapidPrice}{" "}
+                  RapidClick Price: {this.props.rapidPrice}{" "}
                 </Text>
-                <Text style={styles.information}> x5 damage per .1 sec </Text>
+                <Text style={styles.information2}> x5 dmg every .1 sec </Text>
+                <Text style={styles.information2}> x2 gold every .1 sec </Text>
               </View>
 
               <View style={styles.buyItem}>
@@ -147,7 +145,7 @@ class Cookies extends Component {
               onPress={toggleShop.bind(this)}
               style={styles.bottomButtons}
             >
-              <Text style={styles.footerButtons}>The Shop</Text>
+              <Text style={styles.footerButtons}>Play Game</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={toggleHighscore.bind(this)}
@@ -192,7 +190,7 @@ class Cookies extends Component {
               onPress={toggleHighscore.bind(this)}
               style={styles.bottomButtons}
             >
-              <Text style={styles.footerButtons}>Highest Score</Text>
+              <Text style={styles.footerButtons}>Play Game</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={toggleProfile.bind(this)}
@@ -209,7 +207,7 @@ class Cookies extends Component {
       return (
         <View style={styles.container}>
           <View style={styles.topContainer}>
-            <Text style={styles.cookieAmount}>{this.props.cookies}</Text>
+            <Text style={styles.cookieAmount}>Gold: {this.props.cookies}</Text>
             <TextInput
               placeholder="Enter your username"
               placeholderTextColor="gray"
@@ -242,7 +240,7 @@ class Cookies extends Component {
               onPress={toggleProfile.bind(this)}
               style={styles.bottomButtons}
             >
-              <Text style={styles.footerButtons}>My Profile</Text>
+              <Text style={styles.footerButtons}>Play Game</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -251,9 +249,15 @@ class Cookies extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.topContainer}>
+        <ImageBackground
+          source={{
+            uri: this.props.background[0]
+          }}
+          style={styles.topContainer}
+        >
+          {/* <View style={styles.topContainer}> */}
           <View style={styles.cookieScreen}>
-            <Text style={styles.levelAmount}> LVL: {this.props.level}</Text>
+            <Text style={styles.levelAmount}> lvl: {this.props.level}</Text>
             <Text style={styles.goldAmount}> Gold: {this.props.cookies} </Text>
             <TouchableOpacity onPress={() => this.props.increaseCookies()}>
               <Image
@@ -268,7 +272,8 @@ class Cookies extends Component {
               HP: {this.props.healthPoints}{" "}
             </Text>
           </View>
-        </View>
+          {/* </View> */}
+        </ImageBackground>
 
         <View style={styles.bottomContainer}>
           <TouchableOpacity
@@ -375,7 +380,8 @@ function mapStateToProps(state) {
     highscore: state.highscore,
     level: state.level,
     healthPoints: state.healthPoints,
-    uri: state.uri
+    uri: state.uri,
+    background: state.background
   };
 }
 
@@ -418,7 +424,9 @@ const styles = StyleSheet.create({
   },
   levelAmount: {
     fontFamily: "Cochin",
-    color: "gray"
+    color: "white",
+    marginBottom: 10,
+    fontSize: 20
   },
   cookieAmount: {
     fontFamily: "Cochin",
@@ -427,21 +435,24 @@ const styles = StyleSheet.create({
   },
   goldAmount: {
     fontFamily: "Cochin",
-    fontSize: 25,
-    marginBottom: 40
+    fontSize: 30,
+    marginBottom: 35,
+    color: "gold",
+    fontWeight: "bold"
   },
   healthAmount: {
     fontFamily: "Cochin",
     fontSize: 35,
     marginTop: 30,
-    color: "red"
+    color: "red",
+    fontWeight: "bold"
   },
   bottomButtons: {
     flex: 1 / 3,
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: "black"
+    borderColor: "brown"
   },
   usernameVal: {
     marginBottom: 50,
@@ -523,10 +534,25 @@ const styles = StyleSheet.create({
   },
   information: {
     fontFamily: "Cochin",
-    fontSize: 20
+    fontSize: 18
+  },
+  information2: {
+    fontFamily: "Cochin",
+    fontSize: 15
+  },
+  goldNumber: {
+    fontFamily: "Cochin",
+    fontSize: 18,
+    color: "green"
+  },
+  priceNumber: {
+    fontFamily: "Cochin",
+    fontSize: 18,
+    color: "red"
   },
   footerButtons: {
     fontFamily: "Cochin",
-    fontSize: 15
+    fontSize: 15,
+    fontWeight: "bold"
   }
 });
